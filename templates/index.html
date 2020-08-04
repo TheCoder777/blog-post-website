@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Landing Page</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/general.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/index.css') }}">
+    </head>
+    <body>
+        <h1 class="heading">Landing Page</h1>
+        <div class="post">
+            <div class="post_head">
+                <h3>{{ last_post[0] }}</h3>
+                <h6>{{ last_post[1] }}</h6>
+                <p>by {{ last_post[2] }}, {{ last_post[3] }}</p>
+            </div>
+            <p>{{ last_post[4] }}</p>
+        </div>
+    </body>
+</html>

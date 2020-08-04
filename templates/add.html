@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Add Blogpost</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/general.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/add.css') }}">
+    </head>
+    <body>
+        <h1 class="heading">Add Blogpost</h1>
+        {% if action == "write": %}
+        <form class="form" action="" method="post">
+            <input type="text" class="form-data" name="title" placeholder="Title">
+            <input type="text" class="form-data" name="under_title" placeholder="Under Title">
+            <input type="text" class="form-data" name="author" placeholder="Your name">
+            <input type="text" class="form-content" name="content" placeholder="Write something inspiring...">
+            <input class="submit-Button" type="submit" name="submit" value="Post">
+        </form>
+        {% elif post == 1: %}
+        <h1>Failed to add the blogpost to the database!</h1>
+        {% else: %}
+        <h1>Successfully added the blogpost to the database!</h1>
+        {% endif %}
+
+    </body>
+</html>
