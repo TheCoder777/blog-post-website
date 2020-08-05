@@ -1,17 +1,113 @@
-.heading {
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Sen&family=Montserrat&display=swap');
+
+:root {
+    --heading-font: 'Alata', sans-serif;
+    --body-font: 'Sen', sans-serif; /* futura? */
+    --read-font: 'Montserrat', sans-serif;
+
+    --text-color: #000000;
+    --accent-color: #0BE881;
+    --border-width: 0.15rem;
+}
+
+html {
     text-align: center;
-    text-decoration: none;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.heading_container {
+    text-align: center;
     padding: 0;
     margin: 0;
-    margin-top: 100px;
+    margin-bottom: 4rem;
+}
+
+.heading {
+    font-family: var(--heading-font);
+    font-size: 5rem;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.front_menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    text-align: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.front_menu_item {
+    font-size: 1.5rem;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: var(--body-font);
 
 }
+
+.front_menu_item a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
 
 .post {
-    text-align: center;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0;
+    display: block;
+    border: var(--border-width) solid var(--text-color);
+    border-radius: 1rem;
+    /* width: 90%; */
 }
 
-.post_head{
-    outline-color: #333;
-    outline-width: 1px;
+.post_head {
+    border-bottom: var(--border-width) solid var(--text-color);
+    /* border-radius: 1rem; */
+    padding: 0;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    text-align: left;
+    display: inline-block;
+
+}
+
+.title {
+    font-family: var(--heading-font);
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.under_title {
+    font-family: var(--body-font);
+    font-size: 1.2rem;
+    margin: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.4rem;
+    border-left: var(--border-width) solid var(--text-color);
+}
+
+.info {
+    font-family: var(--body-font);
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 0.2rem;
+    text-align: right;
+}
+
+.content {
+    font-family: var(--read-font);
+    font-size: 1.4rem;
+    margin: 1rem;
+    padding: 0;
+    text-align: left;
 }

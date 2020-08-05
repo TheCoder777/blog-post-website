@@ -2,22 +2,33 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Posts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tekk - Posts</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/general.css') }}">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/posts.css') }}">
     </head>
     <body>
-        <h1 class="heading">Posts</h1>
+        <div class="heading_container">
+            <h1 class="heading">Posts</h1>
+            <ul class="front_menu">
+                <li class="front_menu_item">
+                    <a href="{{ url_for('index')  }}">Tekk</a>
+                </li>
+                <li class="front_menu_item">
+                    <a href="{{ url_for('add')  }}">About</a>
+                </li>
+            </ul>
+        </div>
         <ul class="post_list">
             {% for post in posts: %}
             <li class="post_list_item">
                 <div class="post">
                     <div class="post_head">
-                        <h3>{{ post[0] }}</h3>
-                        <h6>{{ post[1] }}</h6>
-                        <p>by {{ post[2] }}, {{ post[3] }}</p>
+                        <h3 class="title">{{ post[0] }}</h3>
+                        <h6 class="under_title">{{ post[1] }}</h6>
+                        <p class="info">by {{ post[2] }}, <br>{{ post[3] }}</p>
                     </div>
-                    <p>{{ post[4] }}</p>
+                    <p class="content">{{ post[4] }}</p>
                 </div>
             </li>
             {% endfor %}

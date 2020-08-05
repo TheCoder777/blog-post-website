@@ -2,13 +2,33 @@ from flask import Flask, render_template, request, redirect
 #from gevent.pywsgi import WSGIServer
 import model as db
 import sys
-import time
+import time, calendar
+
+def get_date(date):
+    date = date.split("/")
+    print(date)
+    time = str(date[0])
+    day_str = calendar.day_name[calendar.weekday(int(date[3]), int(date[2]), int(date[1]))]  # .day_abbr[]
+    day_num = str(int(date[1]))
+    month = calendar.month_name[int(date[2])]
+    year = str(date[3])
+    if int(day_num) == 1:
+        day_num = "1st "
+    elif int(day_num) == 2:
+        day_num = "2nd "
+    elif int(day_num) == 3:
+        day_num = "3rd "
+    else:
+        return str(time + " " + day_str + ", the " + day_num + "th " + month + " " + year)
+
+    return str(time + " " + day_str + ", the " + day_num + month + " " + year)
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
     post = db.get_last_post()
+    post[3] = get_date(post[3])
     return render_template("index.html", last_post=post)
 
 @app.route("/add")
@@ -21,7 +41,7 @@ def new_post():
         title = request.form["title"]
         under_title = request.form["under_title"]
         author = request.form["author"]
-        release = time.strftime("%H:%M/%m/%d/%Y")  # HH:MM/dd/mm/yyyy format
+        release = time.strftime("%H:%M/%-d/%m/%Y")  # HH:MM/dd/mm/yyyy format
         content = request.form["content"]
         if db.add_post(title, under_title, author, release, content):
             print("Failed to add post to database!", file=sys.stderr)
@@ -33,6 +53,8 @@ def new_post():
 @app.route("/posts")
 def posts():
     posts = db.get_all_posts()
+    for post in posts:
+        post[3] = get_date(post[3])
     return render_template("posts.html", posts=posts)
 
 

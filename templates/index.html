@@ -2,19 +2,30 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Landing Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tekk</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/general.css') }}">
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/index.css') }}">
     </head>
     <body>
-        <h1 class="heading">Landing Page</h1>
+        <div class="heading_container">
+            <h1 class="heading">Tekk</h1>
+            <ul class="front_menu">
+                <li class="front_menu_item">
+                    <a href="{{ url_for('posts')  }}">Posts</a>
+                </li>
+                <li class="front_menu_item">
+                    <a href="{{ url_for('add')  }}">About</a> <!-- coming soon -->
+                </li>
+            </ul>
+        </div>
         <div class="post">
             <div class="post_head">
-                <h3>{{ last_post[0] }}</h3>
-                <h6>{{ last_post[1] }}</h6>
-                <p>by {{ last_post[2] }}, {{ last_post[3] }}</p>
+                <h3 class="title">{{ last_post[0] }}</h3>
+                <p class="under_title">{{ last_post[1] }}</p>
+                <p class="info">by {{ last_post[2] }}, <br>{{ last_post[3] }}</p>
             </div>
-            <p>{{ last_post[4] }}</p>
+            <p class="content">{{ last_post[4] }}</p>
         </div>
     </body>
 </html>
