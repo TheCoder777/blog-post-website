@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/general.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/edit.css') }}">
+    </head>
+    <body>
+        <div class="heading_container">
+            <h1 class="heading">Edit</h1>
+            <ul class="front_menu">
+                <li class="front_menu_item">
+                    <a href="{{ url_for('index')  }}">Tekk</a>
+                </li>
+                <li class="front_menu_item">
+                    <a href="{{ url_for('posts')  }}">Posts</a>
+                </li>
+                <li class="front_menu_item">
+                    <a href="{{ url_for('add')  }}">About</a> <!-- coming soon -->
+                </li>
+            </ul>
+        </div>
+
+        <!-- ADD -->
+        <h2 class="subheading">Add Post</h2>
+        {% if action == "write": %}
+        <form class="form" action="" method="post" id="postform">  <!-- fieldset? -->
+            <div class="form_data_container">
+                <input type="text" class="form_data" name="title" placeholder="Title">
+                <input type="text" class="form_data" name="under_title" placeholder="Under Title">
+                <input type="text" class="form_data" name="author" placeholder="Your name">
+            </div>
+        </form>
+        <textarea class="form_content" name="content" placeholder="Write something inspiring..." rows="10" cols="100" form="postform"></textarea><br>
+        <input class="button" type="submit" name="submit" value="POST" form="postform">
+        {% elif post == 1: %}
+        <h1>Failed to add the blogpost to the database!</h1>
+        {% else: %}
+        <h1>Successfully added the blogpost to the database!</h1>
+        {% endif %}
+
+        <!-- OVERVIEW -->
+        <h2 class="subheading">Overview</h2>
+        <div class="overview_table_container">
+            <table class="overview_table">
+                <tr class="overview_table_header">
+                    <th>Title / Under Title</th>
+                    <th>Author</th>
+                    <th>Release</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                {% for post in table: %}
+                <tr class="overview_table_row">
+                    <td><p class="post_title">{{ post[0] }}</p ><p class="post_under_title">{{ post[1] }}</p></td>
+                    <td><p>{{ post[2] }}</p></td>
+                    <td><p>{{ post[3] }}</p></td>
+                    <td><p>Edit</p></td>
+                    <td><a href="" class="delete_link"><p>Delete</p></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>

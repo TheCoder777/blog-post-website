@@ -6,7 +6,6 @@ import time, calendar
 
 def get_date(date):
     date = date.split("/")
-    print(date)
     time = str(date[0])
     day_str = calendar.day_name[calendar.weekday(int(date[3]), int(date[2]), int(date[1]))]  # .day_abbr[]
     day_num = str(int(date[1]))
@@ -31,12 +30,13 @@ def index():
     post[3] = get_date(post[3])
     return render_template("index.html", last_post=post)
 
-@app.route("/add")
+@app.route("/edit")
 def add():
-    return render_template("add.html", action="write")
+    table = db.get_all_posts()
+    return render_template("edit.html", action="write", table=table)
 
-@app.route("/add", methods=["POST"])
-def new_post():
+@app.route("/edit", methods=["POST"])
+def edit():
     if request.method == "POST":
         title = request.form["title"]
         under_title = request.form["under_title"]
@@ -49,6 +49,10 @@ def new_post():
         else:  # successfull
             print("Successfully added post to database!", file=sys.stderr)
             return render_template("add.html", post=0)
+
+@app.route("/edit/d")
+def d():
+    pass
 
 @app.route("/posts")
 def posts():

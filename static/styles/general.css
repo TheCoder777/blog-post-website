@@ -6,7 +6,13 @@
     --read-font: 'Montserrat', sans-serif;
 
     --text-color: #000000;
+    --text-color-inverted: #ffffff;
+    --background-color: #ffffff;
+    --background-color-inverted: #000000;
     --accent-color: #0BE881;
+    --border-color: #000000;
+    --button-color: #ffffff;
+    --button-color-hover: #000000;
     --border-width: 0.15rem;
 }
 
@@ -14,6 +20,24 @@ html {
     text-align: center;
     font-size: 16px;
     color: var(--text-color);
+}
+
+.button {
+    color: var(--text-color);
+    background-color: var(--button-color)
+    font-family: var(--body-font);
+    font-size: 1.2rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 0.5rem;
+    transition-duration: 0.2s;
+}
+
+.button:hover {
+    color: var(--text-color-inverted);
+    background-color: var(--button-color-hover);
+
 }
 
 .heading_container {
@@ -29,6 +53,15 @@ html {
     text-align: center;
     padding: 0;
     margin: 0;
+}
+
+.subheading {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-top: 4rem;
 }
 
 .front_menu {
@@ -61,13 +94,13 @@ html {
     margin-bottom: 1rem;
     padding: 0;
     display: block;
-    border: var(--border-width) solid var(--text-color);
+    border: var(--border-width) solid var(--border-color);
     border-radius: 1rem;
     /* width: 90%; */
 }
 
 .post_head {
-    border-bottom: var(--border-width) solid var(--text-color);
+    border-bottom: var(--border-width) solid var(--border-color);
     /* border-radius: 1rem; */
     padding: 0;
     margin-right: 0.5rem;
@@ -92,7 +125,7 @@ html {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     padding-left: 0.4rem;
-    border-left: var(--border-width) solid var(--text-color);
+    border-left: var(--border-width) solid var(--border-color);
 }
 
 .info {
