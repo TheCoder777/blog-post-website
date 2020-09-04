@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tekk - About</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/general.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/index.css') }}">
+    </head>
+    <body>
+    <div class="heading_container">
+        <h1 class="heading">About</h1>
+        <ul class="front_menu">
+            <li class="front_menu_item">
+                <a href="{{ url_for('index')  }}">Tekk</a>
+            </li>
+            <li class="front_menu_item">
+                <a href="{{ url_for('posts')  }}">Posts</a>
+            </li>
+        </ul>
+    </div>
+    </body>
+</html>

@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect
 import model as db
 import sys
 import time, calendar
+import jsonify
 
 def get_date(date):
     date = date.split("/")
@@ -61,6 +62,9 @@ def posts():
         post[3] = get_date(post[3])
     return render_template("posts.html", posts=posts)
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 # @app.route("/register", methods=["POST"])
 # def get_registration_data():
