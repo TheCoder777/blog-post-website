@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 #from gevent.pywsgi import WSGIServer
 import model as db
 import sys
 import time, calendar
-import jsonify
 
 def get_date(date):
     date = date.split("/")
@@ -65,6 +64,18 @@ def posts():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/api/v1/posts/all")
+def api():
+    response = db.get_all_posts()
+    return jsonify(response)
+
+@app.route("api/v1/posts")
+def api_filter():
+    re = request.args
+
+    #if re.get("id"):
+
 
 # @app.route("/register", methods=["POST"])
 # def get_registration_data():
